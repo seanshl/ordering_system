@@ -1,0 +1,1 @@
+CREATE DATABASE db_polls CHARACTER SET utf8;
