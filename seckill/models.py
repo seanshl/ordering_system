@@ -1,7 +1,7 @@
 from django.db import models
 
 class Seckill_activity(models.Model):
-    id = models.BigAutoField()
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     commodity_id = models.BigIntegerField()
     original_price = models.DecimalField(max_digits=10, decimal_places=2)
