@@ -5,8 +5,9 @@ class SeckillCampaign(models.Model):
     id = models.BigAutoField(primary_key=True)
     campaign_name = models.CharField(max_length=200)
     # commodity_id = models.BigIntegerField()
+    # commodity = models.ForeignField(ref=commodity)
     # original_price = models.DecimalField(max_digits=10, decimal_places=2)
-    seckill_price = models.IntegerField(default=0)  # Use sents
+    seckill_price = models.IntegerField(default=0)  # Use cents
     campaign_status = models.IntegerField(default=0)
     start_time = models.DateTimeField(null=True)
     end_time = models.DateTimeField(null=True)
