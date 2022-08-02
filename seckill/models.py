@@ -20,3 +20,10 @@ class SeckillCampaign(models.Model):
     #     models.Index(name='id_name_commodity_idx', fields=['id', 'name', 'commodity_id']),
     #     models.Index(name='name_idx', fields=['name'])
     # ]
+
+
+class Commodity(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    commodity_name = models.CharField(max_length=50)
+    commodity_description = models.CharField(max_length=1000)
+    commodity_price = models.IntegerField(default=0)
