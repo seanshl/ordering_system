@@ -2,11 +2,14 @@ from django.db import models
 
 
 class SeckillCampaign(models.Model):
+    class Meta:
+        db_table = "seckill_campaign"
+
     id = models.BigAutoField(primary_key=True)
     campaign_name = models.CharField(max_length=200)
-    # commodity_id = models.BigIntegerField()
-    # original_price = models.DecimalField(max_digits=10, decimal_places=2)
-    seckill_price = models.IntegerField(default=0)  # Use sents
+    # commodity_id = models.BigIntegerField(de)
+    original_price = models.IntegerField(default=0)
+    seckill_price = models.IntegerField(default=0)  # Use cents
     campaign_status = models.IntegerField(default=0)
     start_time = models.DateTimeField(null=True)
     end_time = models.DateTimeField(null=True)
