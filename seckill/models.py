@@ -7,6 +7,9 @@ class Commodity(models.Model):
     commodity_description = models.CharField(max_length=1000)
     commodity_price = models.IntegerField(default=0)
 
+    def get_commodity_price_in_dollar(self):
+        return self.commodity_price / 100
+
 
 class SeckillCampaign(models.Model):
     class Meta:
