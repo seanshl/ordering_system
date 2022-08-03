@@ -1,6 +1,6 @@
 black==22.6.0
 click==8.0.4
-ipdb
-ipython
+ipdb==0.13.9
+ipython==8.4.0
 mysqlclient==2.1.1
 pre-commit==2.20.0
