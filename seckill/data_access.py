@@ -80,14 +80,6 @@ def create_seckill_campaign(
     total_stock=0,
     available_stock=0,
 ) -> SeckillCampaign:
-    # commodity = load_commodity_by_id(commodity_id)
-    # if start_time:
-    #     start_time = datetime.strptime(start_time.replace(" ", "-"), "%Y-%m-%d-%H:%M:%S")
-    # if end_time:
-    #     end_time = datetime.strptime(end_time.replace(" ", "-"), "%Y-%m-%d-%H:%M:%S")
-    # total_stock = stock
-    # available_stock = stock
-
     new_campaign = SeckillCampaign(
         campaign_name=campaign_name,
         commodity=commodity,
