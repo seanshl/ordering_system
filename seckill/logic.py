@@ -5,6 +5,7 @@ from seckill.data_access import (
     create_seckill_campaign,
     list_seckill_campaigns_by_status,
 )
+import redis
 
 
 def update_commodity_price_by_name(
@@ -59,3 +60,29 @@ def available_seckill_campaigns_list():
 def seckill_campaign_item_info(seckill_campaign_id):
     campaign = load_seckill_campaign_by_id(seckill_campaign_id)
     return campaign
+
+
+def stock_deduct_validator(key):
+    try:
+        redis_client = redis.Redis()
+        lua_script = """\
+        if redis.call('exists', KEYS[1]) == 1 then
+            local stock = tonumber(redis.call('get', KEYS[1]))
+            if (stock <= 0) then
+                return -1
+            end;
+            redis.call('decr', KEYS[1]);
+            return stock - 1
+        end;
+        return -1;
+        """
+        stock = redis_client.eval(lua_script, 1, key)
+        if stock < 0:
+            print("Ops...no stock now.")
+            return False
+        else:
+            print("Congratulations! You have ordered one.")
+        return True
+    except Exception:
+        print("Creating order failed, please try again")
+        return False
